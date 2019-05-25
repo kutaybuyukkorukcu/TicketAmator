@@ -1,0 +1,26 @@
+﻿@model OtobusBiletiUygulamasi.Areas.Admin.ViewModels.AuthLogin
+
+@{
+    ViewBag.Title = "LoginPage";
+}
+
+<h1>Welcome to our Login Page</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username)
+        @Html.EditorFor(x => x.Username)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password)
+        @Html.EditorFor(x => x.Password)
+    </div>
+
+    <input type="submit" value="Login" /> <br>
+    <label> Click here to join us!</label>  @Html.ActionLink("Register", "Register", "Home")
+}
+

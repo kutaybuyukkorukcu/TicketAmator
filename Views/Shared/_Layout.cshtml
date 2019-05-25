@@ -1,0 +1,25 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Otobus Bilet Uygulamasi</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+        <a href="@Url.RouteUrl("Home")">Otobus Bilet Uygulamasi</a>
+    </h1>
+
+
+    @RenderBody()
+
+    @Scripts.Render("~/Scripts")
+</body>
+</html>
