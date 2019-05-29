@@ -22,11 +22,11 @@ namespace OtobusBiletiUygulamasi.Migrations
                 .WithColumn("BUS_ID").AsInt32().Identity().PrimaryKey()
                 .WithColumn("KalkisDest").AsString(45).Nullable()
                 .WithColumn("VarisDest").AsString(45).Nullable()
-                .WithColumn("KalkisTime").AsTime().Nullable()
-                .WithColumn("VarisTime").AsTime().Nullable()
+                .WithColumn("KalkisTime").AsString(45).Nullable()
+                .WithColumn("VarisTime").AsString(45).Nullable()
                 .WithColumn("KalkisDate").AsDate().Nullable()
                 .WithColumn("KoltukSayisi").AsInt32().Nullable()
-                .WithColumn("Fiyat").AsString(45).Nullable();
+                .WithColumn("Fiyat").AsInt32().Nullable();
 
             Create.Table("sold_ticket")
                 .WithColumn("UserID").AsInt32().ForeignKey("users", "ID").OnDelete(System.Data.Rule.Cascade)
@@ -36,6 +36,7 @@ namespace OtobusBiletiUygulamasi.Migrations
                 .WithColumn("Telefon").AsString(45).Nullable()
                 .WithColumn("Email").AsString(45).Nullable()
                 .WithColumn("KoltukNo").AsInt32().Nullable();
+
             Create.Table("users")
                 .WithColumn("ID").AsInt32().Identity().PrimaryKey()
                 .WithColumn("Username").AsString(45).Nullable()

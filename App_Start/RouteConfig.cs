@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using OtobusBiletiUygulamasi.Controllers;
 
 namespace OtobusBiletiUygulamasi
 {
@@ -13,13 +14,15 @@ namespace OtobusBiletiUygulamasi
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            var namespaces = new[] { typeof(HomeController).Namespace };
+
             /* routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             ); */
 
-            routes.MapRoute("Home", "", new { Controller = "Home", Action = "Index" });
+            routes.MapRoute("Home", "", new { Controller = "Home", Action = "Index" }, namespaces);
         }
     }
 }

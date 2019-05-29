@@ -1,0 +1,58 @@
+﻿@model OtobusBiletiUygulamasi.Areas.Admin.ViewModels.BusForm
+
+@{
+    ViewBag.Title = "Add New Bus Route";
+}
+
+
+<h1>@(Model.IsNew ? "Create A New Route" : "Update The Bus Route")</h1>
+
+@using (Html.BeginForm("Form", "Bus"))
+{
+
+    if (!Model.IsNew)
+    {
+        @Html.HiddenFor(f => f._BusId)
+    }
+
+    @Html.ValidationSummary() // ustune mpa-cv form.cshmtl'deki div tagleri gelicek
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisDest)
+        @Html.EditorFor(x => x.KalkisDest)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.VarisDest)
+        @Html.EditorFor(x => x.VarisDest)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisTime)
+        @Html.EditorFor(x => x.KalkisTime)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.VarisTime)
+        @Html.EditorFor(x => x.VarisTime)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisDate)
+        @Html.EditorFor(x => x.KalkisDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KoltukSayisi)
+        @Html.EditorFor(x => x.KoltukSayisi)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Fiyat)
+        @Html.EditorFor(x => x.Fiyat)
+    </div>
+
+    <input type="submit" value="@(Model.IsNew ? "Add New Bus" : "Update The Bus")"/> <br>
+    <a href="@Url.Action("Index")"> or cancel </a>
+}
+

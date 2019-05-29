@@ -1,0 +1,42 @@
+﻿@model OtobusBiletiUygulamasi.Areas.Admin.ViewModels.BusIndex
+
+@{
+    ViewBag.Title = "LoginPage";
+}
+
+<h1>Welcome to our Login Page</h1>
+
+<a href="@Url.Action("New")"><i class="glyphicon glyphicon-plus"></i>Create A New Bus </a>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Kalkis Noktasi</th>
+                <th>Varis Noktasi</th>
+                <th>Kalkis Zamani</th>
+                <th>Varis Zamani</th>
+                <th>Kalkis Tarihi</th>
+                <th>Koltuk Sayisi</th>
+                <th>Fiyati</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bus in Model.Buses)
+            {
+                <tr>
+                    <td>@bus.KalkisDest</td>
+                    <td>@bus.VarisDest</td>
+                    <td>@bus.KalkisTime</td>
+                    <td>@bus.VarisTime</td>
+                    <td>@bus.KalkisDate</td>
+                    <td>@bus.KoltukSayisi</td>
+                    <td>@bus.Fiyat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

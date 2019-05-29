@@ -166,13 +166,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BusController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Auth.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Buses.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\PagedBuses.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Migrations\_001_Tables.cs" />
     <Compile Include="Models\BusInfo.cs" />
@@ -197,6 +200,8 @@
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Bus\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Bus\Form.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -53,10 +53,10 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Register(AuthLogin form)
         {
-            /* if (Database.Session.Query<User>().Any(u => u.Username == form.Username))
+            if (Database.Session.Query<User>().Any(u => u.Username == form.Username)) // Sonradan yorumdan kaldirdim, test et calisiyor mu veya bozuyor mu
             {
                 ModelState.AddModelError("Username", "Username must be unique");
-            } */
+            } 
 
             if (!ModelState.IsValid)
             {
