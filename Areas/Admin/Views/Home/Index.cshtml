@@ -5,3 +5,12 @@
 
 <h2>ANA SAYFA :)</h2>
 
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Welcome back @User.Identity.Name</p>
+    <label> Click here to logout!</label> @Html.ActionLink("Logout", "Logout", "Home")
+
+    if (User.IsInRole("admin"))
+    {
+    }
+}

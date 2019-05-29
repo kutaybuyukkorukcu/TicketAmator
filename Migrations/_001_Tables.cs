@@ -34,8 +34,8 @@ namespace OtobusBiletiUygulamasi.Migrations
                 .WithColumn("YolcuAd").AsString(45).Nullable()
                 .WithColumn("YolcuSoyad").AsString(45).Nullable()
                 .WithColumn("Telefon").AsString(45).Nullable()
-                .WithColumn("Email").AsString(45).Nullable();
-
+                .WithColumn("Email").AsString(45).Nullable()
+                .WithColumn("KoltukNo").AsInt32().Nullable();
             Create.Table("users")
                 .WithColumn("ID").AsInt32().Identity().PrimaryKey()
                 .WithColumn("Username").AsString(45).Nullable()

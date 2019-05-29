@@ -19,8 +19,11 @@
         @Html.LabelFor(x => x.Password)
         @Html.EditorFor(x => x.Password)
     </div>
+    <h2>
+       Message is : @ViewBag.Message
+    </h2>
 
-    <input type="submit" value="Login" /> <br>
-    <label> Click here to join us!</label>  @Html.ActionLink("Register", "Register", "Home")
+        <input type="submit" value="Login" /> <br>
+        <label> Click here to join us!</label> @Html.ActionLink("Register", "Register", "Home")
 }
 

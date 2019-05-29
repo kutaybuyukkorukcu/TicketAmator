@@ -15,6 +15,7 @@ namespace OtobusBiletiUygulamasi.Models
         public virtual string YolcuSoyad { get; set; }
         public virtual string Telefon { get; set; }
         public virtual string Email { get; set; }
+        public virtual int KoltukNo { get; set; }
     }
 
     public class SoldTicketMap : ClassMapping<SoldTicket>
@@ -29,6 +30,7 @@ namespace OtobusBiletiUygulamasi.Models
             Property(x => x.YolcuSoyad);
             Property(x => x.Telefon);
             Property(x => x.Email);
+            Property(x => x.KoltukNo);
         }
     }
 }

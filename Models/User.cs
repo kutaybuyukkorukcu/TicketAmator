@@ -12,7 +12,23 @@ namespace OtobusBiletiUygulamasi.Models
         public virtual int ID { get; set; }
         public virtual string Username { get; set; }
         public virtual string Password { get; set; }
+
+        public static void FakeHash()
+        {
+            BCrypt.Net.BCrypt.HashPassword("", 13);
+        }
+
+        public virtual void setPassword(string pass)
+        {
+            Password = BCrypt.Net.BCrypt.HashPassword(pass, 13);
+        }
+
+        public virtual bool CheckPassword(string pass)
+        {
+            return BCrypt.Net.BCrypt.Verify(pass, Password);
+        }
     }
+
 
     public class UserMap : ClassMapping<User>
     {

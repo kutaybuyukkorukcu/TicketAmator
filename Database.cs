@@ -31,7 +31,7 @@ namespace OtobusBiletiUygulamasi
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
             mapper.AddMapping<BusInfoMap>();
-            mapper.AddMapping<SoldTicketMap>();
+            mapper.AddMapping<SoldTicketMap>(); // KoltukNo sonradan ekledim. FYI
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
 

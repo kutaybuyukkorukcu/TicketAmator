@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using OtobusBiletiUygulamasi.Areas.Admin.ViewModels;
 using OtobusBiletiUygulamasi.Models;
 
@@ -10,15 +11,38 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Login(AuthLogin form)
+        public ActionResult Login()
         {
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(AuthLogin form, string returnUrl)
+        {
+            var user = Database.Session.Query<User>().FirstOrDefault(u => u.Username == form.Username);
+
+            if (user == null)
+                Models.User.FakeHash();
+
+            if (user == null || !user.CheckPassword(form.Password)) { 
+                ModelState.AddModelError("Username", "Username or password is incorrect");
+                return View(form);
+            }
+
+            FormsAuthentication.SetAuthCookie(form.Username, true);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Register()
@@ -44,6 +68,8 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                 Username = form.Username,
                 Password = form.Password
             };
+
+            user.setPassword(user.Password);
 
             Database.Session.Save(user);
 
