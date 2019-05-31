@@ -14,10 +14,12 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
         public PagedBuses<BusInfo> Buses { get; set; }    
     }
 
-    public class BusForm // Changed it to BusForm instead of BusNew
+    public class BusForm
     {
         public bool IsNew { get; set; }
-        public int? _BusId { get; set; } // Bunu ekleme sebebim Form sayfasinda hidden sekilde idsi gozuksun
+
+        // Bunu ekleme sebebim Form sayfasinda hidden sekilde idsi gozuksun ve IsNew mi degil mi anlayabilelim
+        public int? _BusId { get; set; } 
 
         [Required, MaxLength(128)]
         public string KalkisDest { get; set; }

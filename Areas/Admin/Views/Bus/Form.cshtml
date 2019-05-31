@@ -10,49 +10,45 @@
 @using (Html.BeginForm("Form", "Bus"))
 {
 
-    if (!Model.IsNew)
-    {
-        @Html.HiddenFor(f => f._BusId)
-    }
+        @Html.ValidationSummary() // ustune mpa-cv form.cshmtl'deki div tagleri gelicek
 
-    @Html.ValidationSummary() // ustune mpa-cv form.cshmtl'deki div tagleri gelicek
+        <div class="form-group">
+            @Html.LabelFor(x => x.KalkisDest)
+            @Html.TextBoxFor(x => x.KalkisDest, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.KalkisDest)
-        @Html.EditorFor(x => x.KalkisDest)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.VarisDest)
+            @Html.TextBoxFor(x => x.VarisDest, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.VarisDest)
-        @Html.EditorFor(x => x.VarisDest)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.KalkisTime)
+            @Html.TextBoxFor(x => x.KalkisTime, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.KalkisTime)
-        @Html.EditorFor(x => x.KalkisTime)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.VarisTime)
+            @Html.TextBoxFor(x => x.VarisTime, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.VarisTime)
-        @Html.EditorFor(x => x.VarisTime)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.KalkisDate)
+            @Html.TextBoxFor(x => x.KalkisDate, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.KalkisDate)
-        @Html.EditorFor(x => x.KalkisDate)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.KoltukSayisi)
+            @Html.TextBoxFor(x => x.KoltukSayisi, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.KoltukSayisi)
-        @Html.EditorFor(x => x.KoltukSayisi)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Fiyat)
+            @Html.TextBoxFor(x => x.Fiyat)
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Fiyat)
-        @Html.EditorFor(x => x.Fiyat)
-    </div>
-
-    <input type="submit" value="@(Model.IsNew ? "Add New Bus" : "Update The Bus")"/> <br>
-    <a href="@Url.Action("Index")"> or cancel </a>
-}
+        <input type="submit" value="@(Model.IsNew ? "Add New Bus" : "Update The Bus")" />
+        <br>
+        <a href="@Url.Action("Index")"> or cancel </a>
+        }
 

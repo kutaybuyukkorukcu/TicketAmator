@@ -1,10 +1,50 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
+﻿@model OtobusBiletiUygulamasi.ViewModels.BusQuery
 
+@{
+    ViewBag.Title = "Main Page";
 }
 
+<link rel="stylesheet" href="~/Content/jquery-ui.min.css" />
 
-<h1>BURADA KALKIS, VARIS VE TARIH GOZUKECEK</h1>
+<h1>Welcome to our Main Page</h1>
 
-INDEX ISMINI DEGISTIRIP MAIN PAGE FALAN YAPARIM
+<div class="container">
+    @using (Html.BeginForm())
+    {
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisDest, "Nereden :") <br />
+        @Html.TextBoxFor(x => x.KalkisDest, new { @class = "form-control", placeholder = "Istanbul" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.VarisDest, "Nereye :") <br />
+        @Html.TextBoxFor(x => x.VarisDest, new { @class = "form-control", placeholder = "Ankara" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisDate, "Gidis Tarihi :") <br />
+        @Html.EditorFor(x => x.KalkisDate, new { htmlAttributes = new { placeholder = "MM/DD/YYYY", @class = "datepicker", @readonly = "readonly" } })
+    </div>
+
+        <input class="btn btn-default" type="submit" value="Listele" /> <br>
+
+        @Html.ValidationSummary()
+    }
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            showOn: "both",
+            buttonText: "<i class='glyphicon glyphicon-calendar'></i>",
+            minDate: 0
+        });
+    });
+
+</script>
+
+
+

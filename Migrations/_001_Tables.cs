@@ -29,7 +29,7 @@ namespace OtobusBiletiUygulamasi.Migrations
                 .WithColumn("Fiyat").AsInt32().Nullable();
 
             Create.Table("sold_ticket")
-                .WithColumn("UserID").AsInt32().ForeignKey("users", "ID").OnDelete(System.Data.Rule.Cascade)
+                .WithColumn("ID").AsInt32().Identity().PrimaryKey()
                 .WithColumn("BusID").AsInt32().ForeignKey("bus_info", "BusID").OnDelete(System.Data.Rule.Cascade)
                 .WithColumn("YolcuAd").AsString(45).Nullable()
                 .WithColumn("YolcuSoyad").AsString(45).Nullable()

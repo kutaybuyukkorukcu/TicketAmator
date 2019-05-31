@@ -9,6 +9,7 @@ using OtobusBiletiUygulamasi.Infrastructure;
 
 namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BusController : Controller
     {
         private const int BusPerPage = 5;
@@ -35,9 +36,9 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             return View("Form", new BusForm() { IsNew = true});
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int bus_id) // changed this parameter from id to bus_id cause url didnt recognize ?Bus_ID=1 
         {
-            var _bus = Database.Session.Load<BusInfo>(id);
+            var _bus = Database.Session.Load<BusInfo>(bus_id);
 
             if (_bus == null)
                 return HttpNotFound();
@@ -45,7 +46,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             return View("Form", new BusForm
             {
                 IsNew = false,
-                _BusId = id,
+                _BusId = bus_id,
                 KalkisDest = _bus.KalkisDest,
                 VarisDest = _bus.VarisDest,
                 KalkisTime = _bus.KalkisTime,
@@ -54,6 +55,18 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                 KoltukSayisi = _bus.KoltukSayisi,
                 Fiyat = _bus.Fiyat
             });
+        }
+
+        public ActionResult Delete(int bus_id)
+        {
+            var _bus = Database.Session.Load<BusInfo>(bus_id);
+
+            if (_bus == null)
+                return HttpNotFound();
+
+            Database.Session.Delete(_bus);
+            Database.Session.Flush();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

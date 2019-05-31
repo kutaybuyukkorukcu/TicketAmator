@@ -1,0 +1,40 @@
+﻿@model OtobusBiletiUygulamasi.ViewModels.BusTicket
+
+@{
+    ViewBag.Title = "Otobus Bileti";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.YolcuAd, "Adiniz :") <br />
+            @Html.TextBoxFor(x => x.YolcuAd, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.YolcuSoyad, "Soyadiniz :") <br />
+            @Html.TextBoxFor(x => x.YolcuSoyad, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Telefon, "Telefon Numaraniz :") <br />
+            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Email, "Email Adresiniz :") <br />
+            @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.KoltukNo, "Koltuk Numarasi :") <br />
+            @Html.TextBoxFor(x => x.KoltukNo, new { @class = "form-control" })
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Bilet Olustur" /> <br>
+    }
+</div

@@ -23,6 +23,9 @@ namespace OtobusBiletiUygulamasi
             ); */
 
             routes.MapRoute("Home", "", new { Controller = "Home", Action = "Index" }, namespaces);
+            routes.MapRoute("Routes", "Routes", new { Controller = "Home", Action = "Routes" }, namespaces);
+            routes.MapRoute("Bilet Alimi", "BuyTicket", new { Controller = "Seat", Action = "BusSeat" });
+            routes.MapRoute("Bilet", "Sold", new { Controller = "Seat", Action = "Sold" });
         }
     }
 }
