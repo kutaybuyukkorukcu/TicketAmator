@@ -18,23 +18,23 @@
 </div>
 <br />
 <div class="container"> </div>
-    <h1>Yolcu Bilgileri</h1>
-    <table class="table table-striped table-hover">
-        <thead class=".thead-dark">
-            <tr>
-                <th scope="col">Koltuk No</th>
-                <th scope="col">İsim</th>
-                <th scope="col">Soyisim</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="row">@Model.KoltukNo</td>
-                <td>@Model.YolcuAd</td>
-                <td>@Model.YolcuSoyad</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Yolcu Bilgileri</h1>
+<table class="table table-striped table-hover">
+    <thead class=".thead-dark">
+        <tr>
+            <th scope="col">Koltuk No</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Soyisim</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">@Model.KoltukNo</td>
+            <td>@Model.YolcuAd</td>
+            <td>@Model.YolcuSoyad</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 
 <div class="container">
@@ -59,4 +59,8 @@
             </tr>
         </tbody>
     </table>
+
 </div>
+    <hr />
+
+    <label>Ana Sayfaya Don</label> <br /> <button class="btn btn-default"><a href="@Url.Action("Index","Home")">Ana Sayfa</a></button>

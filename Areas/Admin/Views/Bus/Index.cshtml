@@ -4,7 +4,7 @@
     ViewBag.Title = "LoginPage";
 }
 
-<h1>Welcome to our Login Page</h1>
+<h1>Hosgeldin @User.Identity.Name</h1>
 
 <div class="btn-toolbar">
     <div class="btn-group">
@@ -48,7 +48,7 @@
             {
                 var IsNull = "";
 
-                if(bus == null)
+                if (bus == null)
                 {
                     IsNull = "danger";
                 }
@@ -75,5 +75,12 @@
             }
         </tbody>
     </table>
-
+<hr />
+    <div>
+        <label>Ana Sayfaya Don</label> <br /> <button class="btn btn-default"><a href="@Url.Action("Index","Home", new { area = "" })">Ana Sayfa</a></button>
+    </div>
+<br />
+    <div>
+        <label>Cikis icin</label> <br /> <button class="btn btn-default">@Html.ActionLink("Logout", "Logout", "Home")</button>
+    </div>
 </div>

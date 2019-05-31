@@ -9,7 +9,6 @@ using OtobusBiletiUygulamasi.Models;
 
 namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         
@@ -35,10 +34,11 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             return RedirectToAction("Index", "Bus");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home", new { area = ""});
         }
 
         public ActionResult Register()
