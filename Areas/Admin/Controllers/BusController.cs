@@ -61,6 +61,13 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         {
             var _bus = Database.Session.Load<BusInfo>(bus_id);
 
+            var _tickets = Database.Session.Query<SoldTicket>()
+                .Where(u => u.BusID == bus_id)
+                .ToList();
+
+            Database.Session.Delete(_tickets);
+            Database.Session.Flush();
+
             if (_bus == null)
                 return HttpNotFound();
 

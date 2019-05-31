@@ -4,22 +4,35 @@
     ViewBag.Title = "Register Page";
 }
 
-<h1>Welcome to our Register Page</h1>
+<style>
+    .form-control {
+        width: 35%;
+        margin: 0 auto;
+        width: 250px;
+    }
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary()
+    .container {
+        text-align: center;
+    }
+</style>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Username)
-        @Html.EditorFor(x => x.Username)
-    </div>
+<div class="container">
+    <h1>Admin Uyeligi</h1>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Password)
-        @Html.EditorFor(x => x.Password)
-    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
 
-    <input type="submit" value="Register" />
-}
+        <div class="form-group">
+            @Html.LabelFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(x => x.Password)
+            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "Password" })
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Register" />
+    }
+</div>

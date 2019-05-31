@@ -9,13 +9,11 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
 {
     public class AuthLogin
     {
-        [Required]
-        [DisplayName("Kullanıcı Adiniz")]
+        [DisplayName("Kullanıcı Adi :")]
         public string Username { get; set; }
 
-        [Required]
         [DataType("password")]
-        [DisplayName("Kullanıcı şifre")]
+        [DisplayName("Kullanıcı Sifresi :")]
         [MinLength(3)]
         public string Password { get; set; }
     }

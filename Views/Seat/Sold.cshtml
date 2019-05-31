@@ -4,11 +4,59 @@
     ViewBag.Title = "Sold Ticket";
 }
 
-<h2>Sold Ticket</h2>
+<style>
+    h1, h3 {
+        text-align: center;
+    }
+</style>
 
+<div class="col-md-12">
+    <div class="center-block bilet-olus img-responsive">
+        <h1 style="color:darkred">BİLETİNİZ OLUŞTURULDU</h1>
+        <h3>YOLCULUĞUNUZDA BİZİ TERCİH ETTİĞİNİZ İÇİN TEŞEKKÜR EDER, İYİ YOLCULUKLAR DİLERİZ.</h3>
+    </div>
+</div>
+<br />
+<div class="container"> </div>
+    <h1>Yolcu Bilgileri</h1>
+    <table class="table table-striped table-hover">
+        <thead class=".thead-dark">
+            <tr>
+                <th scope="col">Koltuk No</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Soyisim</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">@Model.KoltukNo</td>
+                <td>@Model.YolcuAd</td>
+                <td>@Model.YolcuSoyad</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-Yolcunun Adi : @Model.YolcuAd
-Yolcunun Soyadi : @Model.YolcuSoyad
-Yolcunun Telefon Numarasi : @Model.Telefon
-Yolcunun Email Adresi : @Model.Email
-Yolcunun Koltuk Numarasi : @Model.KoltukNo
+<div class="container">
+    <h1>Sefer Bilgileri</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nereden</th>
+                <th scope="col">Nereye</th>
+                <th scope="col">Binis Saati</th>
+                <th scope="col">Inis Saati</th>
+                <th scope="col">Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">@Model.nereden</td>
+                <td>@Model.nereye</td>
+                <td>@Model.binisSaat</td>
+                <td>@Model.inisSaat</td>
+                <td>@Model.tarih.ToString().Substring(0, 10)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

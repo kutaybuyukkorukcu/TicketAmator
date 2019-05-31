@@ -9,14 +9,10 @@ using OtobusBiletiUygulamasi.Models;
 
 namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
-        [Authorize(Roles="Admin")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        
         public ActionResult Login()
         {
             return View();
@@ -36,7 +32,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(form.Username, true);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Bus");
         }
 
         public ActionResult Logout()
@@ -73,7 +69,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 
             Database.Session.Save(user);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Bus");
         }
     }
 }

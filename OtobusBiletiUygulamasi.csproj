@@ -211,7 +211,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Bus\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Bus\Form.cshtml" />

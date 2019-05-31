@@ -15,14 +15,17 @@ namespace OtobusBiletiUygulamasi.Controllers
             return View();
         }
 
-        public ActionResult Sold(int bus_id)
+        public ActionResult Sold(BusTicket form)
         {
-            var soldTicket = Database.Session.Load<SoldTicket>(bus_id);
+            // var soldTicket = Database.Session.Load<SoldTicket>(bus_id);
 
-            if (soldTicket  == null) 
+            //if (soldTicket  == null) 
+            //  return HttpNotFound();
+
+            if (form == null)
                 return HttpNotFound();
 
-            return View(soldTicket);
+            return View(form);
         }
 
         [HttpPost]
@@ -33,6 +36,9 @@ namespace OtobusBiletiUygulamasi.Controllers
 
             SoldTicket ticket;
 
+            var _bus = Database.Session.Load<BusInfo>(bus_id);
+            _bus.KoltukSayisi -= 1;
+            
             ticket = new SoldTicket()
             {
                 BusID = bus_id,
@@ -40,17 +46,18 @@ namespace OtobusBiletiUygulamasi.Controllers
                 YolcuSoyad = form.YolcuSoyad,
                 Telefon = form.Telefon,
                 Email = form.Email,
-                KoltukNo = form.KoltukNo
+                KoltukNo = form.KoltukNo,
             };
 
             form.Bus_ID = bus_id;
+            form.nereden = _bus.KalkisDest;
+            form.nereye = _bus.VarisDest;
+            form.binisSaat = _bus.KalkisTime;
+            form.inisSaat = _bus.VarisTime;
+            form.tarih = _bus.KalkisDate;
 
             Database.Session.SaveOrUpdate(ticket);
             Database.Session.Flush();
-
-            var _bus = Database.Session.Load<BusInfo>(bus_id);
-
-            _bus.KoltukSayisi -= 1;
 
             Database.Session.SaveOrUpdate(_bus);
             Database.Session.Flush();
