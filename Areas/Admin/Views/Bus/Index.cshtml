@@ -66,7 +66,7 @@
                             <a href="@Url.Action("Edit",new {bus.Bus_ID})" class="btn btn-primary">
                                 <i class="glyphicon  glyphicon-edit"></i>Edit
                             </a>
-                            <a href="@Url.Action("Delete",new {bus.Bus_ID})" class="btn btn-danger" data-post="Are you sure you want to delete this post?">
+                            <a href="@Url.Action("Delete",new {bus.Bus_ID})" class="alert btn btn-danger" data-post="Are you sure you want to delete this post?">
                                 <i class="glyphicon glyphicon-remove"></i>Delete
                             </a>
                         </div>
@@ -75,11 +75,11 @@
             }
         </tbody>
     </table>
-<hr />
+    <hr />
     <div>
         <label>Ana Sayfaya Don</label> <br /> <button class="btn btn-default"><a href="@Url.Action("Index","Home", new { area = "" })">Ana Sayfa</a></button>
     </div>
-<br />
+    <br />
     <div>
         <label>Cikis icin</label> <br /> <button class="btn btn-default">@Html.ActionLink("Logout", "Logout", "Home")</button>
     </div>

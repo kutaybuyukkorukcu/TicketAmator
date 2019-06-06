@@ -43,7 +43,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             if (_bus == null)
                 return HttpNotFound();
 
-            return View("Form", new BusForm
+            return View("Form", new BusForm()
             {
                 IsNew = false,
                 _BusId = bus_id,
@@ -72,6 +72,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Form(BusForm form)
         {
+            //form.IsNew = form._BusId == null;
             form.IsNew = form._BusId == null;
 
             if (!ModelState.IsValid)
