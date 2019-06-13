@@ -18,7 +18,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
     {
         public bool IsNew { get; set; }
 
-        // Bunu ekleme sebebim Form sayfasinda hidden sekilde idsi gozuksun ve IsNew mi degil mi anlayabilelim
+        // Creating this variable so we can use it to check for IsNew
         public int? _BusId { get; set; } 
 
         [Required, MaxLength(128)]
