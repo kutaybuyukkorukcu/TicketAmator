@@ -32,6 +32,10 @@ namespace OtobusBiletiUygulamasi
             mapper.AddMapping<UserMap>();
             mapper.AddMapping<BusInfoMap>();
             mapper.AddMapping<SoldTicketMap>(); // KoltukNo sonradan ekledim. FYI
+            mapper.AddMapping<BusMap>();
+            mapper.AddMapping<MuavinMap>();
+            mapper.AddMapping<SoforMap>();
+
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
 

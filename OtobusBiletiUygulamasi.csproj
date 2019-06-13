@@ -167,9 +167,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CrewController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Auth.cs" />
     <Compile Include="Areas\Admin\ViewModels\Buses.cs" />
+    <Compile Include="Areas\Admin\ViewModels\BusVehicle.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Crew.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeatController.cs" />
     <Compile Include="Database.cs" />
@@ -179,7 +183,11 @@
     <Compile Include="Infrastructure\PagedBuses.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Migrations\_001_Tables.cs" />
+    <Compile Include="Migrations\_002_NewTables.cs" />
+    <Compile Include="Models\Bus.cs" />
     <Compile Include="Models\BusInfo.cs" />
+    <Compile Include="Models\Muavin.cs" />
+    <Compile Include="Models\Sofor.cs" />
     <Compile Include="Models\SoldTicket.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +199,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\Anonymous.jpg" />
+    <Content Include="Content\images\MercedesBenz-Travego.jpg" />
     <Content Include="Content\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\images\ui-icons_555555_256x240.png" />
     <Content Include="Content\images\ui-icons_777620_256x240.png" />
@@ -214,6 +224,11 @@
     <Content Include="Areas\Admin\Views\Home\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Bus\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Bus\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Crew\Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Crew\Driver.cshtml" />
+    <Content Include="Areas\Admin\Views\Crew\Assistant.cshtml" />
+    <Content Include="Areas\Admin\Views\Vehicle\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Vehicle\Form.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

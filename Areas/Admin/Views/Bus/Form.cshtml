@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Form", "Bus"))
 {
 
-        @Html.ValidationSummary() // ustune mpa-cv form.cshmtl'deki div tagleri gelicek
+        @Html.ValidationSummary()
 
         <div class="form-group">
             @Html.LabelFor(x => x.KalkisDest)
@@ -48,7 +48,7 @@
         </div>
 
         <input type="submit" value="@(Model.IsNew ? "Add New Bus" : "Update The Bus")" />
-        <br>
+        <br />
         <a href="@Url.Action("Index")"> or cancel </a>
-        }
+}
 

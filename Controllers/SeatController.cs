@@ -41,7 +41,7 @@ namespace OtobusBiletiUygulamasi.Controllers
             
             ticket = new SoldTicket()
             {
-                BusID = bus_id,
+                RouteID = bus_id,
                 YolcuAd = form.YolcuAd,
                 YolcuSoyad = form.YolcuSoyad,
                 Telefon = form.Telefon,

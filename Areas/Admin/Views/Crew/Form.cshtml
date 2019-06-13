@@ -1,0 +1,61 @@
+﻿@model OtobusBiletiUygulamasi.Areas.Admin.ViewModels.CrewForm
+
+@{
+    ViewBag.Title = "Add a new member to your crew";
+}
+
+@{
+    var WhichCrew = "";
+
+    if (Model.IsDriver == true)
+    {
+        WhichCrew = "FormDriver";
+    }
+    else
+    {
+        WhichCrew = "FormAssistant";
+    }
+
+    var state = "";
+
+    if (Model.IsNew == true)
+    {
+        state = "Create A New";
+    }
+    else
+    {
+        state = "Edit";
+    }
+} 
+
+<h1> @(Model.IsDriver ? state + " Driver" : state + " Assistant") </h1>
+
+@using (Html.BeginForm(WhichCrew, "Crew"))
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Ad)
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Soyad)
+        @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.TC)
+        @Html.TextBoxFor(x => x.TC, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Numara)
+        @Html.TextBoxFor(x => x.Numara, new { @class = "form-control" })
+    </div>
+
+    <input type="submit" value="Add" />
+    <br />
+    <a href="@Url.Action(Model.IsDriver ? "Driver" : "Assistant")"> or cancel </a>
+}
+

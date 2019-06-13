@@ -36,17 +36,17 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             return View("Form", new BusForm() { IsNew = true});
         }
 
-        public ActionResult Edit(int bus_id) // changed this parameter from id to bus_id cause url didnt recognize ?Bus_ID=1 
+        public ActionResult Edit(int id) // bus_id was working but now it doesn't. Have to convert it to id so i can pull the ID value from the url 
         {
-            var _bus = Database.Session.Load<BusInfo>(bus_id);
+            var _bus = Database.Session.Load<BusInfo>(id);
 
             if (_bus == null)
                 return HttpNotFound();
 
-                return View("Form", new BusForm()
+            return View("Form", new BusForm()
             {
                 IsNew = false,
-                _BusId = bus_id,
+                _BusId = id,
                 KalkisDest = _bus.KalkisDest,
                 VarisDest = _bus.VarisDest,
                 KalkisTime = _bus.KalkisTime,
@@ -57,9 +57,9 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             });
         }
 
-        public ActionResult Delete(int bus_id)
+        public ActionResult Delete(int id)
         {
-            var _bus = Database.Session.Load<BusInfo>(bus_id);
+            var _bus = Database.Session.Load<BusInfo>(id);
 
             if (_bus == null)
                 return HttpNotFound();
@@ -72,8 +72,10 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Form(BusForm form)
         {
-            //form.IsNew = form._BusId == null;
-            form.IsNew = form._BusId == null;
+            // form.IsNew = form._BusId == null;
+
+            if (form._BusId == null)
+                form.IsNew = true;
 
             if (!ModelState.IsValid)
                 return View(form);
@@ -98,6 +100,12 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                 if (_busInfo == null)
                     return HttpNotFound();
             }
+
+
+            /* Bu degerleri ViewModel'e ekleyecegim. Simdilik alltaki degerlerin CRUD'lari ile ugrasiyorum.
+            _busInfo.SoforID = 1;
+            _busInfo.MuavinID = 1;
+            _busInfo.BusID = 1; */
 
             _busInfo.KoltukSayisi = form.KoltukSayisi;
             _busInfo.Fiyat = form.Fiyat;

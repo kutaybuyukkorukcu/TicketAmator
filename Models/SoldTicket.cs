@@ -10,9 +10,11 @@ namespace OtobusBiletiUygulamasi.Models
     public class SoldTicket
     {
         public virtual int ID { get; set; }
-        public virtual int BusID { get; set; }
+        public virtual int RouteID { get; set; }
+
         public virtual string YolcuAd { get; set; }
         public virtual string YolcuSoyad { get; set; }
+        public virtual string KimlikNo { get; set; }
         public virtual string Telefon { get; set; }
         public virtual string Email { get; set; }
         public virtual int KoltukNo { get; set; }
@@ -25,12 +27,13 @@ namespace OtobusBiletiUygulamasi.Models
             Table("sold_ticket");
 
             Id(x => x.ID, x => x.Generator(Generators.Identity));
-            Property(x => x.BusID, x => x.NotNullable(true));
-            Property(x => x.YolcuAd);
+            Property(x => x.RouteID, x => x.NotNullable(true));
+            Property(x => x.YolcuAd, x => x.NotNullable(true));
             Property(x => x.YolcuSoyad);
-            Property(x => x.Telefon);
-            Property(x => x.Email);
-            Property(x => x.KoltukNo);
+            Property(x => x.KimlikNo, x => x.NotNullable(true));
+            Property(x => x.Telefon, x => x.NotNullable(true));
+            Property(x => x.Email, x => x.NotNullable(true));
+            Property(x => x.KoltukNo, x => x.NotNullable(true));
         }
     }
 }

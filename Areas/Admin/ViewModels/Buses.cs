@@ -18,7 +18,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
     {
         public bool IsNew { get; set; }
 
-        // Creating this variable so we can use it to check for IsNew
         public int? _BusId { get; set; } 
 
         [Required, MaxLength(128)]

@@ -19,28 +19,32 @@ namespace OtobusBiletiUygulamasi.Migrations
         public override void Up()
         {
             Create.Table("bus_info")
-                .WithColumn("BUS_ID").AsInt32().Identity().PrimaryKey()
-                .WithColumn("KalkisDest").AsString(45).Nullable()
-                .WithColumn("VarisDest").AsString(45).Nullable()
-                .WithColumn("KalkisTime").AsString(45).Nullable()
+                .WithColumn("ID").AsInt32().Identity().PrimaryKey()
+                .WithColumn("KalkisDest").AsString(45)
+                .WithColumn("VarisDest").AsString(45)
+                .WithColumn("KalkisTime").AsString(45)
                 .WithColumn("VarisTime").AsString(45).Nullable()
-                .WithColumn("KalkisDate").AsDate().Nullable()
+                .WithColumn("KalkisDate").AsDate()
                 .WithColumn("KoltukSayisi").AsInt32().Nullable()
-                .WithColumn("Fiyat").AsInt32().Nullable();
+                .WithColumn("Fiyat").AsInt32()
+                .WithColumn("BusID").AsInt32().ForeignKey("bus", "ID").OnDelete(System.Data.Rule.Cascade)
+                .WithColumn("SoforID").AsInt32().ForeignKey("sofor", "ID").OnDelete(System.Data.Rule.Cascade)
+                .WithColumn("MuavinID").AsInt32().ForeignKey("muavin", "ID").OnDelete(System.Data.Rule.Cascade);
 
             Create.Table("sold_ticket")
                 .WithColumn("ID").AsInt32().Identity().PrimaryKey()
-                .WithColumn("BusID").AsInt32().ForeignKey("bus_info", "BusID").OnDelete(System.Data.Rule.Cascade)
-                .WithColumn("YolcuAd").AsString(45).Nullable()
+                .WithColumn("RouteID").AsInt32().ForeignKey("bus_info", "ID").OnDelete(System.Data.Rule.Cascade)
+                .WithColumn("YolcuAd").AsString(45)
                 .WithColumn("YolcuSoyad").AsString(45).Nullable()
-                .WithColumn("Telefon").AsString(45).Nullable()
-                .WithColumn("Email").AsString(45).Nullable()
-                .WithColumn("KoltukNo").AsInt32().Nullable();
+                .WithColumn("Telefon").AsString(45)
+                .WithColumn("Email").AsString(45)
+                .WithColumn("KoltukNo").AsInt32()
+                .WithColumn("KimlikNo").AsString(45);
 
             Create.Table("users")
                 .WithColumn("ID").AsInt32().Identity().PrimaryKey()
-                .WithColumn("Username").AsString(45).Nullable()
-                .WithColumn("Password").AsString(45).Nullable();
+                .WithColumn("Username").AsString(45)
+                .WithColumn("Password").AsString(45);
         }
     }
 }

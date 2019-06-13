@@ -9,7 +9,11 @@ namespace OtobusBiletiUygulamasi.Models
 {
     public class BusInfo
     {
-        public virtual int Bus_ID { get; set; }
+        public virtual int ID { get; set; }
+        public virtual int BusID { get; set; }
+        public virtual int SoforID { get; set; }
+        public virtual int MuavinID { get; set; }
+
         public virtual string KalkisDest { get; set; }
         public virtual string VarisDest { get; set; }
         public virtual string KalkisTime { get; set; }
@@ -25,13 +29,17 @@ namespace OtobusBiletiUygulamasi.Models
         {
             Table("bus_info");
 
-            Id(x => x.Bus_ID, x => x.Generator(Generators.Identity));
-            Property(x => x.KalkisDest);
-            Property(x => x.VarisDest);
-            Property(x => x.KalkisTime);
+            Id(x => x.ID, x => x.Generator(Generators.Identity));
+            Property(x => x.BusID, x => x.NotNullable(true));
+            Property(x => x.SoforID, x => x.NotNullable(true));
+            Property(x => x.MuavinID, x => x.NotNullable(true));
+
+            Property(x => x.KalkisDest, x => x.NotNullable(true));
+            Property(x => x.VarisDest, x => x.NotNullable(true));
+            Property(x => x.KalkisTime, x => x.NotNullable(true));
             Property(x => x.VarisTime);
-            Property(x => x.KalkisDate);
-            Property(x => x.KoltukSayisi);
+            Property(x => x.KalkisDate, x => x.NotNullable(true));
+            Property(x => x.KoltukSayisi, x => x.NotNullable(true));
             Property(x => x.Fiyat);
         }
     }

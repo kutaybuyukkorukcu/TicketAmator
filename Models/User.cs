@@ -37,8 +37,8 @@ namespace OtobusBiletiUygulamasi.Models
             Table("users");
 
             Id(x => x.ID, x => x.Generator(Generators.Identity));
-            Property(x => x.Username);
-            Property(x => x.Password);
+            Property(x => x.Username, x => x.NotNullable(true));
+            Property(x => x.Password, x => x.NotNullable(true));
         }
     }
 }
