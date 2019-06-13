@@ -39,7 +39,7 @@
 
         <div class="form-group">
             @Html.LabelFor(x => x.KoltukSayisi)
-            @Html.TextBoxFor(x => x.KoltukSayisi, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KoltukSayisi, new { @class = "form-control", @Value = 35, disabled = "disabled"})
         </div>
 
         <div class="form-group">
