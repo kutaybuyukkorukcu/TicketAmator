@@ -10,9 +10,36 @@ namespace OtobusBiletiUygulamasi.Controllers
 {
     public class SeatController : Controller
     {
-        public ActionResult BusSeat()
+        public ActionResult BusSeat(int id)
         {
-            return View();
+            // KoltukNo'larinin hepsini cek  ve temp listeye ata
+            
+             var _seats = Database.Session.QueryOver<SoldTicket>()
+                .Where(u => u.RouteID == id)
+                .Select(c => c.KoltukNo)
+                .List<int>();
+                
+            /*var _seats = Database.Session.Query<SoldTicket>()
+                .Where(u => u.RouteID == id)
+                .ToList();
+
+            foreach (var anan in _seats)
+            {
+                anan.KoltukNo
+            }*/
+
+            /*
+            List<int> _seats = new List<int>();
+
+            _seats = Database.Session.CreateQuery("Select KoltukNo from sold_ticket st WHERE st.RouteID = :id")
+                .SetParameter("id", id)
+                .UniqueResult();
+            */
+
+            return View("BusSeat", new BusTicket()
+            {
+                Seats = _seats
+            });
         }
 
         public ActionResult Sold(BusTicket form)
@@ -37,6 +64,11 @@ namespace OtobusBiletiUygulamasi.Controllers
             SoldTicket ticket;
 
             var _bus = Database.Session.Load<BusInfo>(id);
+            if (_bus.KoltukSayisi == 0)
+            {
+                ModelState.AddModelError("KoltukSayisi", "Tum koltuklar dolmustur!");
+            }
+
             _bus.KoltukSayisi -= 1;
             
             ticket = new SoldTicket()

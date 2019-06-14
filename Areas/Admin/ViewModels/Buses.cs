@@ -44,7 +44,10 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
         [Required]
         public string KalkisTime { get; set; }
         
+        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public string VarisTime { get; set; }
+
+        public List<string> Sehirler { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
@@ -54,6 +57,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
         [Required]
         public int KoltukSayisi { get; set; }
 
+        [Required]
         public int Fiyat { get; set; }
     }
 }

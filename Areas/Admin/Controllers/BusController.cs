@@ -37,12 +37,105 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             var _sofor = Database.Session.Query<Sofor>().ToList();
             var _muavin = Database.Session.Query<Muavin>().ToList();
 
+            List<string> liste = new List<string>();
+
+            string[] strArray = new string[82];
+
+            strArray[0] = "Istanbul / Otogar";
+            strArray[1] = "Adana";
+            strArray[2] = "Adıyaman";
+            strArray[3] = "Afyon";
+            strArray[4] = "Ağrı";
+            strArray[5] = "Amasya";
+            strArray[6] = "Ankara";
+            strArray[7] = "Antalya";
+            strArray[8] = "Artvin";
+            strArray[9] = "Aydın";
+            strArray[10] = "Balıkesir";
+            strArray[11] = "Bilecik";
+            strArray[12] = "Bingöl";
+            strArray[13] = "Bitlis";
+            strArray[14] = "Bolu";
+            strArray[15] = "Burdur";
+            strArray[16] = "Bursa";
+            strArray[17] = "Çanakkale";
+            strArray[18] = "Çankırı";
+            strArray[19] = "Çorum";
+            strArray[20] = "Denizli";
+            strArray[21] = "Diyarbakır";
+            strArray[22] = "Edirne";
+            strArray[23] = "Elazığ";
+            strArray[24] = "Erzincan";
+            strArray[25] = "Erzurum";
+            strArray[26] = "Eskişehir";
+            strArray[27] = "Gaziantep";
+            strArray[28] = "Giresun";
+            strArray[29] = "Gümüşhane";
+            strArray[30] = "Hakkari";
+            strArray[31] = "Hatay";
+            strArray[32] = "Isparta";
+            strArray[33] = "İçel";
+            strArray[35] = "İstanbul";
+            strArray[34] = "İzmir";
+            strArray[36] = "Kars";
+            strArray[37] = "Kastamonu";
+            strArray[38] = "Kayseri";
+            strArray[39] = "Kırklareli";
+            strArray[40] = "Kırşehir";
+            strArray[41] = "Kocaeli";
+            strArray[42] = "Konya";
+            strArray[43] = "Kütahya";
+            strArray[44] = "Malatya";
+            strArray[45] = "Manisa";
+            strArray[46] = "Kahramanmaraş";
+            strArray[47] = "Mardin";
+            strArray[48] = "Muğla";
+            strArray[49] = "Muş";
+            strArray[50] = "Nevşehir";
+            strArray[51] = "Niğde";
+            strArray[52] = "Ordu";
+            strArray[53] = "Rize";
+            strArray[54] = "Sakarya";
+            strArray[55] = "Samsun";
+            strArray[56] = "Siirt";
+            strArray[57] = "Sinop";
+            strArray[58] = "Sivas";
+            strArray[59] = "Tekirdağ";
+            strArray[60] = "Tokat";
+            strArray[61] = "Trabzon";
+            strArray[62] = "Tunceli";
+            strArray[63] = "Şanlıurfa";
+            strArray[64] = "Uşak";
+            strArray[65] = "Van";
+            strArray[66] = "Yozgat";
+            strArray[67] = "Zonguldak";
+            strArray[68] = "Aksaray";
+            strArray[69] = "Bayburt";
+            strArray[70] = "Karaman";
+            strArray[71] = "Kırıkkale";
+            strArray[72] = "Batman";
+            strArray[73] = "Şırnak";
+            strArray[74] = "Bartın";
+            strArray[75] = "Ardahan";
+            strArray[76] = "Iğdır";
+            strArray[77] = "Yalova";
+            strArray[78] = "Karabük";
+            strArray[79] = "Kilis";
+            strArray[80] = "Osmaniye";
+            strArray[81] = "Düzce";
+
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                liste.Add(strArray[i]);
+            }
+
             return View("Form", new BusForm()
             {
                 IsNew = true,
                 Sofors = _sofor,
                 Muavins = _muavin,
-                Buses = _bus
+                Buses = _bus,
+                Sehirler = liste
             });
         }
 
@@ -57,11 +150,104 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             var _sofor = Database.Session.Query<Sofor>().ToList();
             var _muavin = Database.Session.Query<Muavin>().ToList();
 
+            List<string> liste = new List<string>();
+
+            string[] strArray = new string[82];
+
+            strArray[0] = "Istanbul";
+            strArray[1] = "Ankara";
+            strArray[2] = "Edirne";
+            strArray[3] = "Afyon";
+            strArray[4] = "Ağrı";
+            strArray[5] = "Amasya";
+            strArray[6] = "Adıyaman";
+            strArray[7] = "Antalya";
+            strArray[8] = "Artvin";
+            strArray[9] = "Aydın";
+            strArray[10] = "Balıkesir";
+            strArray[11] = "Bilecik";
+            strArray[12] = "Bingöl";
+            strArray[13] = "Bitlis";
+            strArray[14] = "Bolu";
+            strArray[15] = "Burdur";
+            strArray[16] = "Bursa";
+            strArray[17] = "Çanakkale";
+            strArray[18] = "Çankırı";
+            strArray[19] = "Çorum";
+            strArray[20] = "Denizli";
+            strArray[21] = "Diyarbakır";
+            strArray[22] = "Edirne";
+            strArray[23] = "Elazığ";
+            strArray[24] = "Erzincan";
+            strArray[25] = "Erzurum";
+            strArray[26] = "Eskişehir";
+            strArray[27] = "Gaziantep";
+            strArray[28] = "Giresun";
+            strArray[29] = "Gümüşhane";
+            strArray[30] = "Hakkari";
+            strArray[31] = "Hatay";
+            strArray[32] = "Isparta";
+            strArray[33] = "İçel";
+            strArray[35] = "Adana";
+            strArray[34] = "İzmir";
+            strArray[36] = "Kars";
+            strArray[37] = "Kastamonu";
+            strArray[38] = "Kayseri";
+            strArray[39] = "Kırklareli";
+            strArray[40] = "Kırşehir";
+            strArray[41] = "Kocaeli";
+            strArray[42] = "Konya";
+            strArray[43] = "Kütahya";
+            strArray[44] = "Malatya";
+            strArray[45] = "Manisa";
+            strArray[46] = "Kahramanmaraş";
+            strArray[47] = "Mardin";
+            strArray[48] = "Muğla";
+            strArray[49] = "Muş";
+            strArray[50] = "Nevşehir";
+            strArray[51] = "Niğde";
+            strArray[52] = "Ordu";
+            strArray[53] = "Rize";
+            strArray[54] = "Sakarya";
+            strArray[55] = "Samsun";
+            strArray[56] = "Siirt";
+            strArray[57] = "Sinop";
+            strArray[58] = "Sivas";
+            strArray[59] = "Tekirdağ";
+            strArray[60] = "Tokat";
+            strArray[61] = "Trabzon";
+            strArray[62] = "Tunceli";
+            strArray[63] = "Şanlıurfa";
+            strArray[64] = "Uşak";
+            strArray[65] = "Van";
+            strArray[66] = "Yozgat";
+            strArray[67] = "Zonguldak";
+            strArray[68] = "Aksaray";
+            strArray[69] = "Bayburt";
+            strArray[70] = "Karaman";
+            strArray[71] = "Kırıkkale";
+            strArray[72] = "Batman";
+            strArray[73] = "Şırnak";
+            strArray[74] = "Bartın";
+            strArray[75] = "Ardahan";
+            strArray[76] = "Iğdır";
+            strArray[77] = "Yalova";
+            strArray[78] = "Karabük";
+            strArray[79] = "Kilis";
+            strArray[80] = "Osmaniye";
+            strArray[81] = "Düzce";
+
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                liste.Add(strArray[i]);
+            }
+
             return View("Form", new BusForm()
             {
                 Muavins = _muavin,
                 Sofors = _sofor,
                 Buses = _bus,
+                Sehirler = liste,
                 IsNew = false,
                 _BusId = id,
                 BusID = bus.BusID.ToString(),
@@ -97,6 +283,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 
             if (!ModelState.IsValid)
                 return View(form);
+
 
             BusInfo _busInfo;
             

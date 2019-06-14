@@ -4,6 +4,28 @@
     ViewBag.Title = "Main Page";
 }
 
+@{ 
+    List<SelectListItem> sehirItems = new List<SelectListItem>();
+
+    if (Model.Sehirler == null)
+    {
+        List<string> temp = new List<string>();
+        temp.Add("Istanbul");
+        temp.Add("Edirne");
+
+        Model.Sehirler = temp;
+    }
+
+    foreach (var sehir in Model.Sehirler)
+    {
+        sehirItems.Add(new SelectListItem()
+        {
+            Text = sehir,
+            Value = sehir
+        });
+    }
+}
+
 <style>
     .form-control {
         width: 35%;
@@ -20,17 +42,16 @@
 
 <div class="container">
 
-    <h1>Online Bilet</h1>
+    <h1>Otobus E-Bilet Uygulamasi</h1>
+    <br />
     @using (Html.BeginForm())
     {
         <div class="form-group">
-            @Html.LabelFor(x => x.KalkisDest, "Nereden :") <br />
-            @Html.TextBoxFor(x => x.KalkisDest, new { @class = "form-control", placeholder = "Istanbul" })
+            @Html.DropDownListFor(model => model.KalkisDest, sehirItems, "Nereden", new { @class = "form-control" })
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(x => x.VarisDest, "Nereye :") <br />
-            @Html.TextBoxFor(x => x.VarisDest, new { @class = "form-control", placeholder = "Ankara" })
+            @Html.DropDownListFor(model => model.VarisDest, sehirItems, "Nereye", new { @class = "form-control" })
         </div>
 
         <div class="form-group">

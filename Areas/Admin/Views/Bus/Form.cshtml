@@ -6,35 +6,128 @@
 
 @{
     List<SelectListItem> busItems = new List<SelectListItem>();
-    foreach (var bus in Model.Buses)
+
+    if (Model.Buses == null)
     {
+
         busItems.Add(new SelectListItem()
         {
-            Text = bus.ID.ToString() + " - " + bus.BusName,
-            Value = bus.ID.ToString()
+            Text = "2 - Mercedez-Benz Travego 1",
+            Value = "2"
         });
+
+        busItems.Add(new SelectListItem()
+        {
+            Text = "3 - Bmw Otobus",
+            Value = "3"
+        });
+
+    }
+    else
+    {
+
+        foreach (var bus in Model.Buses)
+        {
+            busItems.Add(new SelectListItem()
+            {
+                Text = bus.ID.ToString() + " - " + bus.BusName,
+                Value = bus.ID.ToString()
+            });
+        }
     }
 
     List<SelectListItem> soforItems = new List<SelectListItem>();
-    foreach (var sofor in Model.Sofors)
+
+    if(Model.Sofors == null)
     {
         soforItems.Add(new SelectListItem()
         {
-            Text = sofor.ID.ToString() + " - " + sofor.SoforAd + " " + sofor.SoforSoyad,
-            Value = sofor.ID.ToString()
+            Text = "1 - Kutay Buyukkorukcu",
+            Value = "1"
         });
     }
+    else
+    {
+        foreach (var sofor in Model.Sofors)
+        {
+            soforItems.Add(new SelectListItem()
+            {
+                Text = sofor.ID.ToString() + " - " + sofor.SoforAd + " " + sofor.SoforSoyad,
+                Value = sofor.ID.ToString()
+            });
+        }
+    }
+
 
     List<SelectListItem> muavinItems = new List<SelectListItem>();
-    foreach (var muavin in Model.Muavins)
+
+    if (Model.Muavins == null)
     {
         muavinItems.Add(new SelectListItem()
         {
-            Text = muavin.ID.ToString() + " - " + muavin.MuavinAd + " " + muavin.MuavinSoyad,
-            Value = muavin.ID.ToString()
+            Text = "3 - Ahmet Mehmet",
+            Value = "5"
+        });
+
+        muavinItems.Add(new SelectListItem()
+        {
+            Text = "5 - Hakan Ahmet",
+            Value = "5"
         });
     }
+    else
+    {
+        foreach (var muavin in Model.Muavins)
+        {
+            muavinItems.Add(new SelectListItem()
+            {
+                Text = muavin.ID.ToString() + " - " + muavin.MuavinAd + " " + muavin.MuavinSoyad,
+                Value = muavin.ID.ToString()
+            });
+        }
+    }
+
+    List<SelectListItem> sehirItems = new List<SelectListItem>();
+
+    if (Model.Sehirler == null)
+    {
+        List<string> temp = new List<string>();
+        temp.Add("Istanbul");
+        temp.Add("Edirne");
+
+        Model.Sehirler = temp;
+    }
+    else
+    {
+        foreach (var sehir in Model.Sehirler)
+        {
+            sehirItems.Add(new SelectListItem()
+            {
+                Text = sehir,
+                Value = sehir
+            });
+        }
+
+    }
+
 }
+
+<style>
+    .form-control {
+        width: 60%;
+    }
+
+    .datepicker {
+        width: 60%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .ui-datepicker-div {
+        width: 50%;
+        height: 50%;
+    }
+</style>
 
 <h1>@(Model.IsNew ? "Create A New Route" : "Update The Bus Route")</h1>
 
@@ -48,25 +141,33 @@
     @Html.ValidationSummary()
 
     <div class="form-group">
-        @Html.DropDownListFor(model => model.BusID, busItems, "-- Select Bus --", new { @class = "form-control" })
+        @Html.LabelFor(x => x.BusID, "Arac Seciniz : ")
+        @Html.DropDownListFor(model => model.BusID, busItems, "-- Otobus --", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.DropDownListFor(model => model.SoforID, soforItems, "-- Select Sofor --", new { @class = "form-control" })
+        @Html.LabelFor(x => x.SoforID, "Sofor Seciniz :")
+        @Html.DropDownListFor(model => model.SoforID, soforItems, "-- Sofor --", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.DropDownListFor(model => model.MuavinID, muavinItems, "-- Select Muavin --", new { @class = "form-control" })
+        @Html.LabelFor(x => x.MuavinID, "Muavin Seciniz :")
+        @Html.DropDownListFor(model => model.MuavinID, muavinItems, "-- Muavin --", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(x => x.KalkisDest)
-        @Html.TextBoxFor(x => x.KalkisDest, new { @class = "form-control" })
+        @Html.LabelFor(x => x.KalkisDest, "Nereden :")
+        @Html.DropDownListFor(model => model.KalkisDest, sehirItems, "Nereden", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(x => x.VarisDest)
-        @Html.TextBoxFor(x => x.VarisDest, new { @class = "form-control" })
+        @Html.LabelFor(x => x.VarisDest, "Nereye :")
+        @Html.DropDownListFor(model => model.VarisDest, sehirItems, "Nereye", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KalkisDate, "Gidis Tarihi :") <br />
+        @Html.EditorFor(x => x.KalkisDate, new { htmlAttributes = new { placeholder = "MM/DD/YYYY", @class = "datepicker", @readonly = "readonly" } })
     </div>
 
     <div class="form-group">
@@ -78,12 +179,7 @@
         @Html.LabelFor(x => x.VarisTime)
         @Html.TextBoxFor(x => x.VarisTime, new { @class = "form-control" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(x => x.KalkisDate)
-        @Html.TextBoxFor(x => x.KalkisDate, new { @class = "form-control" })
-    </div>
-
+    
     <div class="form-group">
         @Html.LabelFor(x => x.KoltukSayisi)
         @Html.TextBoxFor(x => x.KoltukSayisi, new { @class = "form-control", @Value = 35 })
@@ -98,3 +194,17 @@
     <br />
     <a href="@Url.Action("Index")"> or cancel </a>
 }
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            showOn: "both",
+            buttonText: "<i class='glyphicon glyphicon-calendar'></i>",
+            minDate: 0
+        });
+    });
+
+</script>

@@ -4,23 +4,23 @@
     ViewBag.Title = "Otobus Bileti";
 }
 
+@{ 
+    var tempStr = "seatCharts-seat seatCharts-cell economy-class target";
+}
+
 <style>
-    .form-control {
-        width: 35%;
-        margin: 0 auto;
-        width: 250px;
+    form{
+        width: 50%;
+        float:left;
     }
 
     td {
         padding : 2px;
     }
-    
-    #temp {
-        float:left;
-        display:inline-block
-    }
-    #temp {
-        text-align: center;
+
+    .booking-details {
+        float: left;
+        align-content:center;
     }
 
     body {
@@ -147,7 +147,6 @@
 
         @Html.ValidationSummary()
 
-        
         <div class="form-group">
             @Html.LabelFor(x => x.YolcuAd, "Adiniz :") <br />
             @Html.TextBoxFor(x => x.YolcuAd, new { @class = "form-control" })
@@ -181,95 +180,96 @@
         <input class="btn btn-primary" type="submit" value="Bilet Olustur" /> <br>
     }
 
+    </div>
+
     <div class="container">
         <div class="wrapper">
             <div id="seat-map" class="seatCharts-container" tabindex="0" aria-activedescendant="4_4">
                 <table>
-                    <thead>
+                    <thead class="front-indicator">
                         <tr>
-                            <th>S</th>
-                            <th>E</th>
-                            <th>A</th>
+                            <th>F</th>
+                            <th>R</th>
+                            <th>O</th>
+                            <th>N</th>
                             <th>T</th>
-                            <th>S</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">1</div>
-                            </td>
+                                <div id="1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(1)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">1</div>
+                            </td>   
                             <td>
-                                <div id="2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">2</div>
+                                <div id="2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(2)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">2</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">3</div>
+                                <div id="3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(3)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">3</div>
                             </td>
                             <td>
-                                <div id="4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">4</div>
+                                <div id="4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(4)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">4</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">5</div>
+                                <div id="5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(5)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">5</div>
                             </td>
                             <td>
-                                <div id="6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">6</div>
+                                <div id="6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(6)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">6</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">7</div>
+                                <div id="7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(7)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">7</div>
                             </td>
                             <td>
-                                <div id="8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">8</div>
+                                <div id="8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(8)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">8</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="9" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">9</div>
+                                <div id="9" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(9)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">9</div>
                             </td>
                             <td>
-                                <div id="10" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">10</div>
+                                <div id="10" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(10)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">10</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="11" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">11</div>
+                                <div id="11" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(11)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">11</div>
                             </td>
                             <td>
-                                <div id="12" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">12</div>
+                                <div id="12" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(12)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">12</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="13" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">13</div>
+                                <div id="13" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(13)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">13</div>
                             </td>
                             <td>
-                                <div id="14" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">14</div>
+                                <div id="14" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(14)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">14</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="15" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">15</div>
+                                <div id="15" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(15)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">15</div>
                             </td>
                             <td>
-                                <div id="16" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">16</div>
+                                <div id="16" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(16)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">16</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="17" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">17</div>
+                                <div id="17" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(17)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">17</div>
                             </td>
                             <td>
-                                <div id="18" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell economy-class available target">18</div>
+                                <div id="18" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(18)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">18</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
@@ -283,70 +283,70 @@
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="19" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">19</div>
+                                <div id="19" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(19)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">19</div>
                             </td>
                             <td>
-                                <div id="20" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">20</div>
-                            </td>
-                            <td>
-                                <div class="seatCharts-cell seatCharts-space"></div>
-                            </td>
-                            <td>
-                                <div id="21" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">21</div>
-                            </td>
-                            <td>
-                                <div id="22" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">22</div>
-                            </td>
-                        </tr>
-                        <tr class="seatCharts-row">
-                            <td>
-                                <div id="23" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">23</div>
-                            </td>
-                            <td>
-                                <div id="24" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">24</div>
+                                <div id="20" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(20)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">20</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="25" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">25</div>
+                                <div id="21" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(21)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">21</div>
                             </td>
                             <td>
-                                <div id="26" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">26</div>
+                                <div id="22" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(22)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">22</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="27" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">27</div>
+                                <div id="23" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(23)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">23</div>
                             </td>
                             <td>
-                                <div id="28" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">28</div>
+                                <div id="24" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(24)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">24</div>
                             </td>
                             <td>
                                 <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="29" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">29</div>
+                                <div id="25" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(25)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">25</div>
                             </td>
                             <td>
-                                <div id="30" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">30</div>
+                                <div id="26" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(26)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">26</div>
                             </td>
                         </tr>
                         <tr class="seatCharts-row">
                             <td>
-                                <div id="31" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">31</div>
+                                <div id="27" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(27)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">27</div>
                             </td>
                             <td>
-                                <div id="32" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">32</div>
+                                <div id="28" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(28)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">28</div>
                             </td>
                             <td>
-                                <div id="33" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">33</div>
+                                <div class="seatCharts-cell seatCharts-space"></div>
                             </td>
                             <td>
-                                <div id="34" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">34</div>
+                                <div id="29" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(29)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">29</div>
                             </td>
                             <td>
-                                <div id="35" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available economy-class target">35</div>
+                                <div id="30" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(30)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">30</div>
+                            </td>
+                        </tr>
+                        <tr class="seatCharts-row">
+                            <td>
+                                <div id="31" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(31)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">31</div>
+                            </td>
+                            <td>
+                                <div id="32" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(32)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">32</div>
+                            </td>
+                            <td>
+                                <div id="33" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(33)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">33</div>
+                            </td>
+                            <td>
+                                <div id="34" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(34)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">34</div>
+                            </td>
+                            <td>
+                                <div id="35" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="@if (Model.Seats.Contains(35)) { @String.Concat(tempStr, " disabled unavailable"); } else { @String.Concat(tempStr, " available"); }">35</div>
                             </td>
                         </tr>
                     </tbody>
@@ -357,7 +357,7 @@
                 <h2>Booking Details</h2>
                 <h3> Selected Seats (<span id="counter">0</span>):</h3>
                 <ul id="selected-seats"></ul>
-                <button class="checkout-button">Checkout &raquo;</button>
+                <button id="checkout-button" class="btn btn-success">Checkout &raquo;</button>
 
                 <div id="legend" class="seatCharts-legend">
                     <ul class="seatCharts-legendList">
@@ -378,14 +378,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
+        $("#selected-seats").on('click', '.seat-li', function () {
+            $(this).closest('li').remove();
+        })
+
         $('.seatCharts-seat').click(function () {
-            $("#selected-seats").append('<li id="welp" value = ' + $(this).attr('id') + ' > Selected ' + $(this).attr('id') + '</li > ');
+            $("#welp").remove
+            $("#selected-seats").append('<li id="welp" class="seat-li" value = ' + $(this).attr('id') + ' > Selected ' + $(this).attr('id') + ' or CANCEL </li > ');
         });
 
-        $('.checkout-button').click(function () {
+        $('#checkout-button').click(function () {
             var seat_id = $("#welp").val();
             console.log(seat_id);   
-            $('#KoltukNo').val($('#KoltukNo').val() + seat_id);
+            $('#KoltukNo').val(seat_id);
         });
         
     </script>

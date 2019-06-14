@@ -18,6 +18,8 @@ namespace OtobusBiletiUygulamasi.ViewModels
 
         public string seatID { get; set; }
 
+        public IList<int> Seats { get; set; }
+
         public string nereden { get; set; }
         public string nereye { get; set; }
         public string binisSaat { get; set; }

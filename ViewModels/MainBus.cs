@@ -21,6 +21,9 @@ namespace OtobusBiletiUygulamasi.ViewModels
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? KalkisDate { get; set; }
+
+        public List<string> Sehirler { get; set; }
+        
     }
 }
 
