@@ -18,18 +18,32 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
     {
         public bool IsNew { get; set; }
 
-        public int? _BusId { get; set; } 
+        public int? _BusId { get; set; }
 
-        [Required, MaxLength(128)]
+        [Required]
+        public string BusID { get; set; }
+
+        public List<Bus> Buses { get; set; }
+
+        [Required]
+        public string SoforID { get; set; }
+
+        public List<Sofor> Sofors { get; set; } // Will also contain SoforSoyad
+
+        [Required]
+        public string MuavinID { get; set; }
+
+        public List<Muavin> Muavins { get; set; } // Will also contain MuavinSoyad
+
+        [Required]
         public string KalkisDest { get; set; }
 
-        [Required, MaxLength(128)]
+        [Required]
         public string VarisDest { get; set; }
 
         [Required]
         public string KalkisTime { get; set; }
         
-        [Required]
         public string VarisTime { get; set; }
 
         [Required]
@@ -40,7 +54,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
         [Required]
         public int KoltukSayisi { get; set; }
 
-        [Required]
         public int Fiyat { get; set; }
     }
 }

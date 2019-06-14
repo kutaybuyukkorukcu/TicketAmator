@@ -1,6 +1,13 @@
 bin
 obj
 
+Content/css
+Content/email_templates
+Content/font-awesome
+Content/fonts
+Content/js
+Content/LESS
+
 *.suo
 *.user
 *.sln.docstates

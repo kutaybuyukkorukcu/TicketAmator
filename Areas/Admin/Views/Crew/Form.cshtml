@@ -26,12 +26,17 @@
     {
         state = "Edit";
     }
-} 
+}
 
 <h1> @(Model.IsDriver ? state + " Driver" : state + " Assistant") </h1>
 
 @using (Html.BeginForm(WhichCrew, "Crew"))
 {
+    if (!Model.IsNew)
+    {
+        @Html.HiddenFor(f => f.CrewID)
+    }
+
     @Html.ValidationSummary()
 
     <div class="form-group">

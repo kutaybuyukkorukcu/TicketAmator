@@ -31,7 +31,7 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.ViewModels
         [Required, MaxLength(45)]
         public string Soyad { get; set; }
 
-        [Required, MaxLength(11)]
+        [Required, MaxLength(45)]
         public string TC { get; set; }
 
         [Required, MaxLength(45)]

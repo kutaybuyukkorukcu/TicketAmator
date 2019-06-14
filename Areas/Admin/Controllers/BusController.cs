@@ -33,27 +33,47 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 
         public ActionResult New()
         {
-            return View("Form", new BusForm() { IsNew = true});
+            var _bus = Database.Session.Query<Bus>().ToList();
+            var _sofor = Database.Session.Query<Sofor>().ToList();
+            var _muavin = Database.Session.Query<Muavin>().ToList();
+
+            return View("Form", new BusForm()
+            {
+                IsNew = true,
+                Sofors = _sofor,
+                Muavins = _muavin,
+                Buses = _bus
+            });
         }
 
         public ActionResult Edit(int id) // bus_id was working but now it doesn't. Have to convert it to id so i can pull the ID value from the url 
         {
-            var _bus = Database.Session.Load<BusInfo>(id);
+            var bus = Database.Session.Load<BusInfo>(id);
 
-            if (_bus == null)
+            if (bus == null)
                 return HttpNotFound();
+
+            var _bus = Database.Session.Query<Bus>().ToList();
+            var _sofor = Database.Session.Query<Sofor>().ToList();
+            var _muavin = Database.Session.Query<Muavin>().ToList();
 
             return View("Form", new BusForm()
             {
+                Muavins = _muavin,
+                Sofors = _sofor,
+                Buses = _bus,
                 IsNew = false,
                 _BusId = id,
-                KalkisDest = _bus.KalkisDest,
-                VarisDest = _bus.VarisDest,
-                KalkisTime = _bus.KalkisTime,
-                VarisTime = _bus.VarisTime,
-                KalkisDate = _bus.KalkisDate,
-                KoltukSayisi = _bus.KoltukSayisi,
-                Fiyat = _bus.Fiyat
+                BusID = bus.BusID.ToString(),
+                SoforID = bus.SoforID.ToString(), // Not sure how SoforID, MuavinID and BusID will react when for Dropdown list cause right now i'm returning an int value for their textboxes
+                MuavinID = bus.MuavinID.ToString(),
+                KalkisDest = bus.KalkisDest,
+                VarisDest = bus.VarisDest,
+                KalkisTime = bus.KalkisTime,
+                VarisTime = bus.VarisTime,
+                KalkisDate = bus.KalkisDate,
+                KoltukSayisi = bus.KoltukSayisi,
+                Fiyat = bus.Fiyat
             });
         }
 
@@ -72,8 +92,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Form(BusForm form)
         {
-            // form.IsNew = form._BusId == null;
-
             if (form._BusId == null)
                 form.IsNew = true;
 
@@ -86,6 +104,9 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
             {
                 _busInfo = new BusInfo()
                 {
+                    BusID = int.Parse(form.BusID), // Considering that they will return value attribute
+                    SoforID = int.Parse(form.SoforID),
+                    MuavinID = int.Parse(form.MuavinID),
                     KalkisDate = form.KalkisDate,
                     KalkisDest = form.KalkisDest,
                     VarisDest = form.VarisDest,
@@ -101,12 +122,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                     return HttpNotFound();
             }
 
-
-            /* Bu degerleri ViewModel'e ekleyecegim. Simdilik alltaki degerlerin CRUD'lari ile ugrasiyorum.
-            _busInfo.SoforID = 1;
-            _busInfo.MuavinID = 1;
-            _busInfo.BusID = 1; */
-
             _busInfo.KoltukSayisi = form.KoltukSayisi;
             _busInfo.Fiyat = form.Fiyat;
 
@@ -115,6 +130,5 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }

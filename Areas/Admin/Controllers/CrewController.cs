@@ -151,11 +151,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                     return HttpNotFound();
             }
 
-            Database.Session.CreateSQLQuery("Delete from muavin where SoforTC = :SoforTC")
-                .SetParameter("SoforTC", form.TC)
-                .UniqueResult();
-            Database.Session.Flush();
-
             _sofor.SoforAd = form.Ad;
             _sofor.SoforSoyad = form.Soyad;
             _sofor.SoforNumara = form.Numara;
@@ -171,10 +166,11 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
         {
             // Editten crewID'yi bu forma aktaramadim bundan dolayi edit yaptigim zaman eskisi ayni kalip, yeni bir seymis gibi yeni bir tane uretiyor.
             // Simdilik varolan kayidi silip, yeni yaratacagim.
-            
+
+            // I forgot to put ID (If !IsNew) in the form. That's why i struggled.
+
             if (form.CrewID == null) // I cant pass CrewID into this function so crewId is null which makes IsNew true everytime.
                 form.IsNew = true;
-            
 
             if (!ModelState.IsValid)
                 return View(form);
@@ -196,12 +192,6 @@ namespace OtobusBiletiUygulamasi.Areas.Admin.Controllers
                     return HttpNotFound();
             }
             
-            Database.Session.CreateSQLQuery("Delete from muavin where MuavinTC = :MuavinTC")
-                .SetParameter("MuavinTC", form.TC)
-                .UniqueResult();
-            Database.Session.Flush();
-
-
             _muavin.MuavinAd = form.Ad;
             _muavin.MuavinSoyad = form.Soyad;
             _muavin.MuavinNumara = form.Numara;
