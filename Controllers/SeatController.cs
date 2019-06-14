@@ -29,27 +29,28 @@ namespace OtobusBiletiUygulamasi.Controllers
         }
 
         [HttpPost]
-        public ActionResult BusSeat(BusTicket form, int bus_id)
+        public ActionResult BusSeat(BusTicket form, int id) // How come id parameter does work? when it didnt work for admin form ActionResult's
         {
             if (!ModelState.IsValid)
                 return View(form);
 
             SoldTicket ticket;
 
-            var _bus = Database.Session.Load<BusInfo>(bus_id);
+            var _bus = Database.Session.Load<BusInfo>(id);
             _bus.KoltukSayisi -= 1;
             
             ticket = new SoldTicket()
             {
-                RouteID = bus_id,
+                RouteID = id,
                 YolcuAd = form.YolcuAd,
                 YolcuSoyad = form.YolcuSoyad,
                 Telefon = form.Telefon,
                 Email = form.Email,
                 KoltukNo = form.KoltukNo,
+                KimlikNo = form.KimlikNo
             };
 
-            form.Bus_ID = bus_id;
+            form.Bus_ID = id;
             form.nereden = _bus.KalkisDest;
             form.nereye = _bus.VarisDest;
             form.binisSaat = _bus.KalkisTime;

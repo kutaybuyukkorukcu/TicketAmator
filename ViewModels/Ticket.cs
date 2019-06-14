@@ -13,7 +13,10 @@ namespace OtobusBiletiUygulamasi.ViewModels
         public string YolcuSoyad { get; set; }
         public string Telefon { get; set; }
         public string Email { get; set; }
+        public string KimlikNo { get; set; }
         public int KoltukNo { get; set; }
+
+        public string seatID { get; set; }
 
         public string nereden { get; set; }
         public string nereye { get; set; }

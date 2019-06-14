@@ -21,6 +21,13 @@ namespace OtobusBiletiUygulamasi.Models
         public virtual DateTime? KalkisDate { get; set; }
         public virtual int KoltukSayisi { get; set; }
         public virtual int Fiyat { get; set; }
+
+        // Delete them after pp
+        public virtual string BusName { get; set; }
+        public virtual string SoforAd { get; set; }
+        public virtual string SoforSoyad { get; set; }
+        public virtual string MuavinAd { get; set; }
+        public virtual string MuavinSoyad { get; set; }
     }
 
     public class BusInfoMap : ClassMapping<BusInfo>

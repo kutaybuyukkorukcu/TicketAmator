@@ -333,6 +333,9 @@
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery.seat-charts.css" />
+    <Content Include="Content\jquery.seat-charts.js" />
+    <Content Include="Content\jquery.seat-charts.min.js" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\demo\chartjs-demo.js" />

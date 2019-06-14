@@ -1,40 +1,44 @@
 ﻿@model OtobusBiletiUygulamasi.ViewModels.BusSearch
 
-    @{
-        ViewBag.Title = "Route Page";
-    }
+@{
+    ViewBag.Title = "Route Page";
+}
 
-    <h1>Welcome to our Result Page</h1>
+<h1>Welcome to our Result Page</h1>
 
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Kalkis Noktasi</th>
-                <th>Varis Noktasi</th>
-                <th>Kalkis Zamani</th>
-                <th>Varis Zamani</th>
-                <th>Kalkis Tarihi</th>
-                <th>Koltuk Sayisi</th>
-                <th>Fiyati</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bus in Model.BusesToSearch)
-            {
-                string kalkis = @bus.KalkisDate.ToString();
-                
+<div class="wrapper">
+    <div class="temp">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
-                    <td>@bus.KalkisDest</td>
-                    <td>@bus.VarisDest</td>
-                    <td>@bus.KalkisTime</td>
-                    <td>@bus.VarisTime</td>
-                    <td>@bus.KalkisDate.ToString().Substring(0, 10)</td>
-                    <td>@bus.KoltukSayisi</td>
-                    <td>@bus.Fiyat</td>
-                    <td>
-                        <button class="btn btn-danger"><a style="color:white" href='@Url.Action("BusSeat","Seat",new { bus.BusID })'> Otobus Sec </a></button>
-                    </td>
+                    <th>Kalkis Noktasi</th>
+                    <th>Varis Noktasi</th>
+                    <th>Kalkis Zamani</th>
+                    <th>Varis Zamani</th>
+                    <th>Kalkis Tarihi</th>
+                    <th>Koltuk Sayisi</th>
+                    <th>Fiyati</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var bus in Model.BusesToSearch)
+                {
+                    string kalkis = @bus.KalkisDate.ToString();
+
+                    <tr>
+                        <td>@bus.KalkisDest</td>
+                        <td>@bus.VarisDest</td>
+                        <td>@bus.KalkisTime</td>
+                        <td>@bus.VarisTime</td>
+                        <td>@bus.KalkisDate.ToString().Substring(0, 10)</td>
+                        <td>@bus.KoltukSayisi</td>
+                        <td>@bus.Fiyat</td>
+                        <td>
+                            <button class="btn btn-danger"><a style="color:white" href='@Url.Action("BusSeat","Seat",new { bus.ID })'> Otobus Sec </a></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
