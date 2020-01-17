@@ -22,13 +22,8 @@ namespace OtobusBiletiUygulamasi.Controllers
             /*var _seats = Database.Session.Query<SoldTicket>()
                 .Where(u => u.RouteID == id)
                 .ToList();
-
-            foreach (var anan in _seats)
-            {
-                anan.KoltukNo
-            }*/
-
             /*
+            
             List<int> _seats = new List<int>();
 
             _seats = Database.Session.CreateQuery("Select KoltukNo from sold_ticket st WHERE st.RouteID = :id")
