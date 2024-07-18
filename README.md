@@ -1,2 +1,1 @@
-# WebProgProjects
-some projects I did to pass the class
+Project for my sophomore year programming class at my university
