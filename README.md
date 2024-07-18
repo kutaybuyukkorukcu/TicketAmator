@@ -1,1 +1,1 @@
-Project for my sophomore year programming class at my university
+Project for my junior year programming class at my university
